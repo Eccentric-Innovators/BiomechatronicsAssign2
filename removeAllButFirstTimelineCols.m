@@ -12,8 +12,13 @@ function outTable = removeAllButFirstTimelineCols(inTable)
     end
     outTable = inTable;
     idxsToRemove = timestampColNames([1:fIdx-1 fIdx+1:numel(timestampColNames)]);
+%     fprintf("%s, ", idxsToRemove);
+%     fprintf("\n");
     outTable(:,idxsToRemove) = [];
-    tmp = outTable.(fIdx);
-    outTable(:,fIdx) = [];
+%     fprintf("Cols in table after removal:\n")
+%     fprintf("%s, ", string(outTable.Properties.VariableNames));
+%     fprintf("\n");
+    tmp = outTable.(timestampColNames(fIdx));
+    outTable(:,timestampColNames(fIdx)) = [];
     outTable = [table(tmp, 'VariableNames', ["Timestamp"]) outTable];
 end

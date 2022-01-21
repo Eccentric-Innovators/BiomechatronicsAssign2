@@ -5,5 +5,7 @@ function outTable = removeAnnotationCols(inTable)
 
     % Remove all "Annotation" columns
     outTable = inTable;
+%     fprintf("%s, ", annotationColNames);
+%     fprintf("\n");
     outTable(:,annotationColNames) = [];
 end

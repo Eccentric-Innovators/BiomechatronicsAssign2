@@ -9,5 +9,6 @@ function printExtraCols(DataStruct)
         fprintf("Extra column names (%d exist) in %s are:\n", numel(extraCols), string(fn(i)))
         fprintf("%s, ", extraCols)
         fprintf("\n")
+        fprintf("\n")
     end
 end
