@@ -1,8 +1,8 @@
 function layers = createCNN(X, Y)
     inputShape = size(X, [1, 2, 3]);
-    outputShape = size(Y, 1);
+    outputShape = numel(categories(Y));
     layers = [
-        imageInputLayer([28 28 1])
+        imageInputLayer(inputShape)
 	    
         convolution2dLayer(3,16,'Padding',1)
         batchNormalizationLayer
@@ -20,7 +20,7 @@ function layers = createCNN(X, Y)
         batchNormalizationLayer
         reluLayer
 	    
-        fullyConnectedLayer(10)
+        fullyConnectedLayer(outputShape)
         softmaxLayer
         classificationLayer];
 end
