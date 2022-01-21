@@ -36,6 +36,9 @@ function outTable = performWindowedOperation(inTable, tw, dt, func)
                 outTable = [outTable; newRow];
             elseif func == "zero_crossings"
                 signs = sign(window) - 1;
+                if any(isnan(signs))
+                    sum(isnan(signs))
+                end
                 zc = xor(signs(2:end,:), signs(1:end-1,:));
                 nzc = num2cell(sum(zc));
                 newRow = table(nzc{:}, 'VariableNames', outTable.Properties.VariableNames);
